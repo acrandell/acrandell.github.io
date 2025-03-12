@@ -1,0 +1,81 @@
+<html>
+
+<head>
+
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class='col-md-12 text-center'>
+                <h1>120-Star's N64</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class='col-md-2'></div>
+            <div id='MarioTable' class='col-md-8 table-responsive'></div>
+            <div class='col-md-2'></div>
+        </div>
+    </div>
+
+    <script>
+        let tableData = [
+            { Rank: '1', Player: 'Weegee', Time: `1H 36m 02s`, Platform: 'N64', Country: 'USA', Region: 'Japan' },
+            { Rank: '2', Player: 'Karin', Time: `1H 36m 25s`, Platform: 'N64', Country: 'Japan', Region: 'Japan' },
+            { Rank: '3', Player: 'Ikori_o', Time: `1H 36m 36s`, Platform: 'N64', Country: 'Japan', Region: 'Japan' },
+            { Rank: '4', Player: 'Parsee02', Time: `1H 36m 44s`, Platform: 'N64', Country: 'Japan', Region: 'Japan' },
+            { Rank: '5', Player: 'Cheese', Time: `1h 36m 45s`, Platform: 'N64', Country: 'Spain', Region: 'Japan' },
+            { Rank: '6', Player: 'marlene', Time: `1h 37m 03s`, Platform: 'N64', Country: 'unkown', Region: 'Japan' },
+            { Rank: '7', Player: 'simply', Time: `1h 37m 06s`, Platform: 'N64', Country: 'USA', Region: 'Japan' },
+            { Rank: '8', Player: 'Liam', Time: `1h 37 17s`, Platform: 'N64', Country: 'USA', Region: 'Japan' },
+            { Rank: '9', Player: 'puncayshun', Time: `1h 37m 31s`, Platform: 'N64', Country: 'USA', Region: 'Japan' },
+            { Rank: '10', Player: 'Kally', Time: `1h 37m 32s`, Platform: 'N64', Country: 'USA', Region: 'Japan' },
+            { Rank: '11', Player: 'BeastAssassin68', Time: `1h 37m 37s`, Platform: 'N64', Country: 'USA', Region: 'Japan' },
+            { Rank: '12', Player: 'Smau', Time: `1h 37m 38s`, Platform: 'N64', Country: 'Finland', Region: 'Japan' },
+            { Rank: '13', Player: 'batora', Time: `1h 37m 37s`, Platform: 'N64', Country: 'Japan', Region: 'Japan' },
+            { Rank: '14', Player: 'Dezanig', Time: `1h 37m 55s`, Platform: 'N64', Country: 'Brazil', Region: 'Japan' },
+        ];
+
+        const tableMaker = (data = []) => {
+            let table = ``;
+            if (Array.isArray(data) && data.length > 0) {
+                table = `<table class="text-center table table-bordered">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Time</th>
+                        <th>Platform</th>
+                        <th>Country</th>
+                        <th>Region</th>
+                    </tr>`;
+                for (let x = 0; x < data.length; x++) {
+                    table += `<tr>
+                        <td>${data[x].Rank}</td>
+                        <td>${data[x].Player}</td>
+                        <td>${data[x].Time}</td>
+                        <td>${data[x].Platform}</td>
+                        <td>${data[x].Country}</td>
+                        <td>${data[x].Region}</td>
+                    </tr>`;
+                }
+                table += `</table>`;
+            }
+            return table;
+        }
+
+        document.getElementById('MarioTable').innerHTML = tableMaker(tableData);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Globe</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/versor@1.0.0/build/versor.js"></script>
+    
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="Index.html">Speedrunning Hub</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
+        <li class="nav-item"><a class="nav-link" href="other.html">Other</a></li>
+        <li class="nav-item"><a class="nav-link" href="ReactIndex.html">Leaderboards</a></li>
+        <li class="nav-item"><a class="nav-link" href="D3Chart.html">D3 Training Chart</a></li>
+        <li class="nav-item"><a class="nav-link" href="D3Globe.html">D3 Globe</a></li>
+      </ul>
+    </div>
+</nav>
+
+<h1>Top 15 Speedrun Locations around the world</h1>
+
+
+<!-- Container for the D3 Globe -->
+<div class="container">
+    <div class="canvas-container">
+        <!-- The canvas will be dynamically appended here by JavaScript -->
+    </div>
+</div>
+
+<script>
+    const width = 960; // Set the width of the canvas
+    const height = Math.min(width, 720);
+    
+    const dpr = window.devicePixelRatio ?? 1;
+    const canvas = d3.create("canvas")
+        .attr("width", dpr * width)
+        .attr("height", dpr * height)
+        .style("width", `${width}px`);
+    
+    const context = canvas.node().getContext("2d");
+    context.scale(dpr, dpr);
+
+    // Define the projection and path generator
+    const projection = d3.geoOrthographic()
+        .scale(300) // Adjust scale for better view
+        .translate([width / 2, height / 2])
+        .clipAngle(90);
+
+    const path = d3.geoPath(projection, context);
+
+    // Load world data
+    d3.json("https://raw.githubusercontent.com/datasets/geo-boundaries-world-110m/master/countries.geojson").then(worldData => {
+        const locations = [
+    { name: "Canada", coords: [-106.3468, 56.1304] },
+    { name: "United States", coords: [-99.9018, 37.0902] },
+    { name: "Michigan, USA", coords: [-84.5364, 44.3148] },
+    { name: "California, USA", coords: [-119.4179, 36.7783] },
+    { name: "West Virginia, USA", coords: [-80.4549, 38.5976] },
+    { name: "Virginia, USA", coords: [-79.3832, 37.4316] },
+    { name: "Pennsylvania, USA", coords: [-77.1945, 41.2033] },
+    { name: "Japan", coords: [138.2529, 36.2048] },
+    { name: "Saitama, Japan", coords: [139.6228, 35.8569] },
+    { name: "Germany", coords: [10.4515, 51.1657] },
+    { name: "Rhineland-Palatinate, Germany", coords: [7.2275, 49.8426] },
+    { name: "Lower Saxony, Germany", coords: [9.8320, 52.6367] },
+    { name: "England", coords: [-1.1743, 52.3555] },
+    { name: "Wexford, Ireland", coords: [-6.4681, 52.3320] },
+    { name: "Netherlands", coords: [5.2913, 52.1326] },
+    { name: "Greece", coords: [21.8243, 39.0742] },
+    { name: "Pays de la Loire, France", coords: [-0.7530, 47.0257] },
+    { name: "France", coords: [2.2137, 46.6034] },
+    { name: "Picardie, France", coords: [2.2786, 49.8870] },
+    { name: "Italy", coords: [12.5674, 41.8719] },
+    { name: "Stockholm, Sweden", coords: [18.0686, 59.3293] },
+    { name: "Antarctica", coords: [0, -90] },
+    { name: "Costa Rica", coords: [-84.0228, 9.7489] },
+    { name: "Uzbekistan", coords: [64.5853, 41.3775] },
+    { name: "Chile", coords: [-71.5385, -35.6751] },
+    { name: "Murcia, Spain", coords: [-1.0000, 37.9922] },
+    { name: "Ecuador", coords: [-79.0193, -1.8312] }
+];
+
+        // Function to render the map
+        function render() {
+            context.clearRect(0, 0, width, height);
+            
+            // Render the Earth
+            context.beginPath();
+            path({ type: "Sphere" });
+            context.fillStyle = "#ddd"; // Earth color
+            context.fill();
+            context.strokeStyle = "#000";
+            context.lineWidth = 1.5;
+            context.stroke();
+
+            // Render countries
+            context.fillStyle = "lightblue"; // Country color
+            context.beginPath();
+            path(worldData);
+            context.fill();
+
+            // Render the locations
+            locations.forEach(location => {
+                const [x, y] = projection(location.coords);
+                context.beginPath();
+                context.arc(x, y, 5, 0, 2 * Math.PI); // Draw a small circle for each location
+                context.fillStyle = "red"; // Color of the points
+                context.fill();
+            });
+        }
+
+        // Function to animate the rotation of the Earth
+        async function animateRotation() {
+            const rotateSpeed = 0.1; // Degrees to rotate per frame
+            let currentRotation = 0;
+
+            while (true) {
+                currentRotation = (currentRotation + rotateSpeed) % 360; // Rotate continuously
+                projection.rotate([currentRotation, 0]); // Apply rotation
+                render(); // Render the updated view
+                await new Promise(requestAnimationFrame); // Wait for the next frame
+            }
+        }
+
+        render(); // Initial rendering of the map
+        animateRotation(); // Start the rotation animation
+
+        document.querySelector('.canvas-container').appendChild(canvas.node()); // Append the canvas to the body
+    });
+</script>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

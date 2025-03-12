@@ -1,0 +1,218 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #333; /* Standard dark text */
+}
+
+/* Hero Section */
+header {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  animation: rainbow 6s infinite; /* Apply rainbow animation */
+}
+
+header p {
+  font-size: 1.25rem;
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  background-color: #343a40; /* Dark gray */
+  color: #f8f9fa; /* Light text */
+}
+
+/* Utility Classes for Sections */
+section {
+  margin-bottom: 40px;
+}
+
+.leaderboard-section,
+.platform-section {
+  display: none;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin: 0 auto 30px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #343a40;
+  color: white;
+}
+
+thead th {
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #ddd;
+}
+
+/* Buttons */
+button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn {
+  margin: 5px;
+}
+
+/* Navigation Bar */
+.navbar {
+  margin-bottom: 30px;
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  animation: rainbow 3s infinite; /* Apply rainbow animation on hover */
+}
+
+/* Video Styling */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Grid System */
+.responsive-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.two-column {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.three-column {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.six-column {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* Image Styling */
+img {
+  justify-content: center; /* Horizontally centers the image */
+  align-items: center; /* Vertically centers the image */
+  text-align: center;
+  max-width: 100%;
+  height: auto;
+  border-radius: 100px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+.card img {
+  justify-content: center; /* Horizontally centers the image */
+  align-items: center; /* Vertically centers the image */
+  text-align: center;
+  width: auto;
+  max-height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+img.mb-3 {
+  margin-bottom: 20px;
+}
+
+/* Icon and Animation */
+.animate {
+  animation: rainbow 6s infinite; /* Apply rainbow animation */
+}
+
+.animate i {
+  transition: transform 0.3s ease;
+}
+
+.animate i:hover {
+  transform: scale(1.2);
+}
+
+i {
+  animation: rainbow 6s infinite;
+}
+
+/* SVG Styling */
+svg {
+  margin: 0 auto;
+  display: block;
+}
+
+/* Canvas Styling */
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  margin-top: 20px;
+}
+
+/* Keyframes for Animation */
+@keyframes rainbow {
+  0% { color: red; }
+  14% { color: orange; }
+  28% { color: yellow; }
+  42% { color: green; }
+  57% { color: blue; }
+  71% { color: indigo; }
+  85% { color: violet; }
+  100% { color: red; }
+}
+
+/* Hidden Elements */
+#120-stars,
+#70-star,
+#16-stars,
+#1-star {
+  display: none;
+}
