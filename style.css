@@ -46,7 +46,73 @@ button:hover {
 
 
 
-
+/* Style for the carousel container */
+.carousel-fade {
+    transition: opacity 0.6s ease-in-out;
+  }
+  
+  /* Add some margin to the bottom of the carousel */
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Style the carousel controls */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Make sure the portfolio information is centered */
+  .portfolio-info {
+    text-align: center;
+  }
+  
+  /* Additional spacing for the portfolio info section */
+  .mt-3 {
+    margin-top: 1rem !important;
+  }
+  
+  /* The "zoom in" preview link icon style */
+  .preview-link {
+    color: #007bff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .preview-link:hover {
+    color: #0056b3;
+  }
+  
+  /* The "details" link icon style */
+  .details-link {
+    color: #007bff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .details-link:hover {
+    color: #0056b3;
+  }
+  
+  /* Adjust lightbox behavior */
+  .glightbox {
+    position: relative;
+  }
+  
+  .glightbox .glightbox-overlay {
+    background: rgba(0, 0, 0, 0.75);
+  }
+    .glightbox .glightbox-content {
+        max-width: 90%;
+        max-height: 90%;
+    }  
 
 
 

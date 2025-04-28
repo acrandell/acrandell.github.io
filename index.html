@@ -29,6 +29,15 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+
+
+  <!-- GLightbox CSS -->
+<link href="https://cdn.jsdelivr.net/npm/glightbox@3.0.5/dist/css/glightbox.min.css" rel="stylesheet">
+
+<!-- GLightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox@3.0.5/dist/js/glightbox.min.js"></script>
+
+
   <!-- =======================================================
   * Template Name: iPortfolio
   * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
@@ -39,6 +48,12 @@
 </head>
 
 <body class="index-page">
+  <script>
+    const lightbox = GLightbox({
+      selector: 'data-glightbox' // This will target all elements with the data-glightbox attribute
+    });
+  </script>
+  
 
   <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
@@ -393,68 +408,135 @@
   <div class="container" data-aos="fade-up" data-aos-delay="100">
 
     <!-- Freshman Year -->
-    <div id="freshman" class="mb-5">
-      <h3 class="text-center my-4">Freshman Year (2021–2022)</h3>
-      <div class="row gy-4 isotope-container">
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-          <div class="portfolio-content h-100">
-            <img src="Images/placeholder1.jpg" class="img-fluid" alt="Storyboard 1">
-            <div class="portfolio-info">
-              <h4>Storyboard: Schrödinger's Cat</h4>
-              <p>My first comic-style narrative exploring the famous quantum mechanics thought experiment.</p>
-              <a href="Images/placeholder1.jpg" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              <a href="projects/storyboard-details.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-            </div>
-          </div>
+<div id="freshman" class="mb-5">
+  <h3 class="text-center my-4">Freshman Year (2021–2022)</h3>
+  
+  <div class="row gy-4 isotope-container">
+  
+   <!-- Storyboard Carousel -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+  <div id="carouselStoryboard" class="carousel slide carousel-fade h-100 mb-3" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="Images/Gimm 200 Story 1-4.jpg" class="d-block w-100 img-fluid" alt="Storyboard 1" data-bs-toggle="lightbox" data-bs-target="#carouselStoryboard" data-glightbox="title: Storyboard 1">
+      </div>
+      <div class="carousel-item">
+        <img src="Images/Gimm 200 Story 5-8.jpg" class="d-block w-100 img-fluid" alt="Storyboard 2" data-bs-toggle="lightbox" data-bs-target="#carouselStoryboard" data-glightbox="title: Storyboard 2">
+      </div>
+      <div class="carousel-item">
+        <img src="Images/Gimm 200 Story 9-12.jpg" class="d-block w-100 img-fluid" alt="Storyboard 3" data-bs-toggle="lightbox" data-bs-target="#carouselStoryboard" data-glightbox="title: Storyboard 3">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselStoryboard" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselStoryboard" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+
+  <div class="portfolio-info text-center mt-3">
+    <h4>GIMM 200 Storyboard</h4>
+    <p>An assignment where we created a basic storyboard for a project.</p>
+    <a href="Images/Gimm200_Story1.jpg" class="glightbox preview-link" data-bs-toggle="lightbox" data-bs-target="#carouselStoryboard" data-glightbox="title: Storyboard Images"><i class="bi bi-zoom-in"></i></a>
+    <a href="projects/storyboard-details.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+  </div>
+</div>
+
+
+    <!-- Project Echo -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item">
+  <div class="portfolio-content h-100 text-center d-flex flex-column justify-content-center align-items-center p-4 border">
+    
+    <!-- Video Embed -->
+    <video controls class="img-fluid mb-3" style="max-height: 200px; object-fit: cover;">
+      <source src="Images/GameTrailer.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <h4>Project Echo</h4>
+    <p>My first Unity game that I made during my first semester.</p>
+    <a href="Year 1/Echo 1st Game assignment.zip" class="details-link mt-3"><i class="bi bi-link-45deg"></i> View Project</a>
+  </div>
+</div>
+
+<!-- Background Project -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+  <div class="portfolio-content h-100 d-flex flex-column justify-content-between">
+
+    <!-- Storyboard Carousel -->
+    <div id="carouselBackground" class="carousel slide mb-3" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="Images/Crandell_Background/Crandell_image 1.jpg" class="d-block w-100 img-fluid" alt="Before">
         </div>
-        <!-- Coming Soon -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-          <div class="portfolio-content h-100 text-center">
-            <h4>Coming Soon</h4>
-            <p>This section is under development and will be updated with more projects from Freshman Year soon!</p>
-          </div>
+        <div class="carousel-item">
+          <img src="Images/Crandell_Background/Crandell_Background.jpg" class="d-block w-100 img-fluid" alt="After">
         </div>
-        <!-- Coming Soon -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-          <div class="portfolio-content h-100 text-center">
-            <h4>Coming Soon</h4>
-            <p>This section is under development and will be updated with more projects from Freshman Year soon!</p>
-          </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselBackground" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselBackground" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+
+    <!-- Text Info -->
+    <div class="text-center">
+      <h4>Background Project</h4>
+      <p>The project was to take an image we had taken and add elements to it that aren't found in the original.</p>
+    </div>
+
+  </div>
+</div>
+
+
+  </div> <!-- end of .row -->
+</div> <!-- end of #freshman -->
+
+
+   <!-- Sophomore Year -->
+<div id="sophomore" class="mb-5">
+  <h3 class="text-center my-4">Sophomore Year (2022–2023)</h3>
+  <div class="row gy-4 isotope-container">
+
+    <!-- Responsive Webpage Project -->
+    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+      <div class="portfolio-content h-100">
+        <img src="Images/260website.png" class="img-fluid" alt="HTML Project">
+        <div class="portfolio-info">
+          <h4>Responsive Webpage</h4>
+          <p>Developed a fully responsive webpage using HTML5, CSS3, and Bootstrap as part of GIMM 260.</p>
+          <a href="Images/260website.png" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          <a href="Year 1/260Final/Index.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
         </div>
       </div>
     </div>
 
-    <!-- Sophomore Year -->
-    <div id="sophomore" class="mb-5">
-      <h3 class="text-center my-4">Sophomore Year (2022–2023)</h3>
-      <div class="row gy-4 isotope-container">
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-          <div class="portfolio-content h-100">
-            <img src="Images/placeholder2.jpg" class="img-fluid" alt="HTML Project">
-            <div class="portfolio-info">
-              <h4>Responsive Webpage</h4>
-              <p>Developed a fully responsive webpage using HTML5, CSS3, and Bootstrap as part of GIMM 240.</p>
-              <a href="Images/placeholder2.jpg" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              <a href="projects/html-project-details.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-            </div>
-          </div>
-        </div>
-        <!-- Coming Soon -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-          <div class="portfolio-content h-100 text-center">
-            <h4>Coming Soon</h4>
-            <p>This section is under development and will be updated with more projects from Sophomore Year soon!</p>
-          </div>
-        </div>
-        <!-- Coming Soon -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-          <div class="portfolio-content h-100 text-center">
-            <h4>Coming Soon</h4>
-            <p>This section is under development and will be updated with more projects from Sophomore Year soon!</p>
-          </div>
-        </div>
+    <!-- Coming Soon Placeholder 1 -->
+    <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
+      <div class="portfolio-content h-100 text-center d-flex flex-column justify-content-center align-items-center p-4 border">
+        <h4>Coming Soon</h4>
+        <p>This section is under development and will be updated with more projects from Sophomore Year soon!</p>
       </div>
     </div>
+
+    <!-- Coming Soon Placeholder 2 -->
+    <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
+      <div class="portfolio-content h-100 text-center d-flex flex-column justify-content-center align-items-center p-4 border">
+        <h4>Coming Soon</h4>
+        <p>This section is under development and will be updated with more projects from Sophomore Year soon!</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
     <!-- Junior Year -->
     <div id="junior" class="mb-5">
@@ -465,7 +547,7 @@
             <img src="Images/placeholder3.jpg" class="img-fluid" alt="Starbourne">
             <div class="portfolio-info">
               <h4>Starbourne: Game Concept</h4>
-              <p>Worked on a cosmic horror game prototype, involving character aging and mental health themes.</p>
+              <p>Created the idea to make a game about stars battling to become the next shooting stars.</p>
               <a href="Images/placeholder3.jpg" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
               <a href="projects/starbourne-details.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
             </div>
